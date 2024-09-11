@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import ErrorPage from './pages/ErrorPage.tsx'
 import RootLayout from './pages/RootLayout.tsx'
+import Team from './pages/Team.tsx'
 import Root from './routes/root.tsx'
-import Team from './routes/team.tsx'
 
 const router = createBrowserRouter([
   {
