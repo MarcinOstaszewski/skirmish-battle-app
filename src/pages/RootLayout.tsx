@@ -3,9 +3,11 @@ import Navbar from "../Navbar/Navbar";
 
 export default function RootLayout() {
   return (
-    <div className="fixed">
-      <Outlet />
+    <>
+      <div className="w-full h-full p-4">
+        <Outlet />
+      </div>
       <Navbar />
-    </div>
+    </>
   );
 }
