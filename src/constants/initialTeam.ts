@@ -37,7 +37,7 @@ export const initialTeamMembers: ITeamMember[] = [
     imageUrl: "./src/assets/paladyn.png"
   },
   {
-    name: "Creazy Rita",
+    name: "Crazy Rita",
     stats: [
       { statName: "STR", value: 2 },
       { statName: "AGI", value: 4 },
