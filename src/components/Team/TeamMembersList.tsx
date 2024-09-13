@@ -7,8 +7,8 @@ export default function TeamMembersList() {
   ));;
 
   return (
-    <div className="h-full overflow-auto">
-      <div className="flex flex-col gap-y-4 pb-8">
+    <div className="h-full overflow-auto pb-32">
+      <div className="flex flex-col gap-y-4">
         {teamMembers}
       </div>
     </div>
