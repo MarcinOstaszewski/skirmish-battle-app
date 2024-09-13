@@ -34,7 +34,7 @@ export const initialTeamMembers: ITeamMember[] = [
         quantity: 1
       }
     ],
-    imageUrl: "./src/assets/paladyn.png"
+    imageUrl: "./assets/paladyn.png"
   },
   {
     name: "Crazy Rita",
@@ -63,7 +63,7 @@ export const initialTeamMembers: ITeamMember[] = [
         quantity: 1
       }
     ],
-    imageUrl: "./src/assets/elf.png"
+    imageUrl: "./assets/elf.png"
   },
   {
     name: "Black Beard",
@@ -91,7 +91,7 @@ export const initialTeamMembers: ITeamMember[] = [
         quantity: 2
       }
     ],
-    imageUrl: "./src/assets/mag.png"
+    imageUrl: "./assets/mag.png"
   },
   {
     name: "John Doe",
@@ -126,6 +126,6 @@ export const initialTeamMembers: ITeamMember[] = [
         quantity: 1
       }
     ],
-    imageUrl: "./src/assets/demon.png"
+    imageUrl: "./assets/demon.png"
   }
 ];
