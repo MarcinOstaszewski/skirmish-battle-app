@@ -1,17 +1,15 @@
 import { getStatValues } from "../../helpers/getStatValues";
+import { IMemberStat } from "../../interfaces";
 
-export default function StatColumn(props: any) {
+export default function StatColumn(props: {stat: IMemberStat}) {
   const { shortName, longName, color, value } = getStatValues(props);
 
-  const shortNameClasses = `text-md text-${color}-500 rounded-md relative`;
-  const valueClasses = `text-5xl text- text-${color}-500 px-1 rounded-md font-extrabold`;
-
   return (
-    <div className="h-full flex flex-col justify-around items-center">
-      <div className={shortNameClasses}>{shortName}
+    <div className="h-full flex justify-around items-center">
+      <div className={`text-md ${color} rounded-md relative`}>{shortName}
         <span className={`absolute hidden text-sm `}>{longName}</span>
       </div>
-      <span className={valueClasses}>{value}</span>
+      <span className={`text-4xl ${color} px-1 rounded-md font-extrabold`}>{value}</span>
     </div>
   );
 }

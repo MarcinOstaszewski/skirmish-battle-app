@@ -1,6 +1,6 @@
 export const statsShortNames = ['STR', 'AGI', 'MND'] as const;
 export const statsLongNames = ['Strength', 'Agility', 'Mind'] as const;
-export const statsColors = ['red', 'teal', 'sky'] as const;
+export const statsColorsClasses = ['text-red-500', 'text-teal-500', 'text-sky-500'] as const;
 
 export const StatsFullNames = {
   STR: 'Strength',
@@ -8,10 +8,10 @@ export const StatsFullNames = {
   MND: 'Mind'
 }
 
+type StatShortName = typeof statsShortNames[number];
+
 export interface IMemberStat {
-  statName: typeof statsShortNames[0]
-    | typeof statsShortNames[1]
-    | typeof statsShortNames[2];
+  statName: StatShortName;
   value: number;
 }
 
