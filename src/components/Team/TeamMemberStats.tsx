@@ -7,7 +7,7 @@ export default function TeamMemberStats({stats}: {stats: IMemberStats}) {
   ));
 
   return (
-    <div className="flex flex-col min-w-20 max-h-44 justify-around bg-white border border-stone-400 rounded-md p-1">
+    <div className="flex flex-col min-w-20 max-h-44 justify-around bg-white dark:bg-zinc-900 border border-stone-400 rounded-md p-1">
       {statsColumns}
     </div>
   );

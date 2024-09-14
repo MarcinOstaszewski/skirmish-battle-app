@@ -23,7 +23,13 @@ export default function TeamMemberImage(
     }
   };
 
-  const commonClasses = 'absolute top-0 bg-white bg-opacity-10 px-1 pb-1 cursor-pointer';
+  const convertNameToLetterColumn = (letterArray: string[]) => {
+    return letterArray.map((char: string) => {
+      return char === ' ' ? <b>{char}<br /></b> : <b>{char}</b>
+    })
+  }
+
+  const commonClasses = 'absolute top-0 bg-white bg-opacity-20 px-1 pb-1 cursor-pointer opacity-60';
 
   return (
     <div className={`relative flex flex-col ${imgWidthClasses[imgWidthValue]} min-h-44 max-h-44 align-middle`}>
@@ -33,11 +39,11 @@ export default function TeamMemberImage(
         <img className={`h-44 ${imgWidthClasses[imgWidthValue]} rounded-md object-cover`} src={imageUrl} alt={`${name} team member image`} />
         </>
       }
-      {imgWidthValue > 1 && <span className="w-full absolute bg-black bg-opacity-30 text-white bottom-0 left-0 px-1">{name}</span>}
+      {imgWidthValue > 1 && <span className="absolute bottom-0 left-0 w-full max-h-18 overflow-y-auto bg-black bg-opacity-30 px-1">{name}</span>}
       {imgWidthValue === 1 && (
-        <span className={`${imgWidthClasses[imgWidthValue]} h-full rounded-md bg-stone-900 text-white font-bold flex justify-center py-2 px-3 leading-4`}>
-          {name.replace(/[ ]/g, '-').split('').join(' ')}
-        </span>
+        <div className={`flex flex-col items-center ${imgWidthClasses[imgWidthValue]} h-full border border-stone-400 rounded-md font-bold leading-3 overflow-y-scroll py-2 pr-2`}>
+          {convertNameToLetterColumn(name.split(''))}
+        </div>
       )}
     </div>
   );

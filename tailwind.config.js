@@ -5,8 +5,13 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxHeight: {
+        '18': '4.5rem',
+      }
+    },
   },
   plugins: [],
+  darkMode: 'media'
 }
 
