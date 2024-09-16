@@ -1,33 +1,49 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
-import './index.css'
 import ErrorPage from './pages/ErrorPage.tsx'
 import RootLayout from './pages/RootLayout.tsx'
-import Team from './pages/Team.tsx'
-import Root from './routes/root.tsx'
+import RulesPage from './pages/RulesPage.tsx'
+import HomePage from './pages/HomePage.tsx'
+import TeamPage from './pages/TeamPage.tsx'
+import store from './store/store.ts'
+import './index.css'
+
+export const routesList = [
+  {
+    path: '/',
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+    title: 'Home'
+  },
+  {
+    path: '/team',
+    element: <TeamPage />,
+    title: 'Team'
+  },
+  {
+    path: '/rules',
+    element: <RulesPage />,
+    title: 'Rules'
+  }
+];
 
 const router = createHashRouter([
   {
     path: '/',
     element: <RootLayout />,
     children: [
-      {
-        path: '/',
-        element: <Root />,
-        errorElement: <ErrorPage />
-      },
-      {
-        path: '/team',
-        element: <Team />
-      }
+      ...routesList
     ]
   }
 ]);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>,
 )

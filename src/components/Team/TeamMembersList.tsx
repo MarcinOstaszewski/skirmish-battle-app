@@ -1,8 +1,8 @@
-import { initialTeamMembers } from "../../constants/initialTeam";
+import { initialTeamMembersData } from "../../constants/initialTeam";
 import TeamMember from "./TeamMember";
 
 export default function TeamMembersList() {
-  const teamMembers = initialTeamMembers.map((member, index) => (
+  const teamMembers = initialTeamMembersData.map((member, index) => (
     <TeamMember key={index} member={member} />
   ));;
 

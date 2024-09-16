@@ -1,6 +1,6 @@
 import { ITeamMember } from "../interfaces";
 
-export const initialTeamMembers: ITeamMember[] = [
+export const initialTeamMembersData: ITeamMember[] = [
   {
     name: "John Doe",
     stats: [
@@ -129,3 +129,8 @@ export const initialTeamMembers: ITeamMember[] = [
     imageUrl: "./assets/demon.png"
   }
 ];
+
+export const initialTeam = {
+  name: "Lethal Mambas",
+  teamMembers: initialTeamMembersData
+}
