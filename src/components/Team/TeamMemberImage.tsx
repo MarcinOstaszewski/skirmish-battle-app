@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TeamMemberName from "./TeamMemberName";
+import ImageResizeArrows from "./ImageResizeArrows";
 
 export default function TeamMemberImage(
   { imageUrl, name, isCharacterPage = false }: { imageUrl: string | undefined, name: string, isCharacterPage?: boolean }
@@ -19,7 +20,6 @@ export default function TeamMemberImage(
   };
 
   const handleChangeImageSize = (isGrow: boolean) => {
-    console.log(isGrow, imgWidthValue);
     if (isGrow) {
       setImgWidthValue(imgWidthValue + 1);
     } else {
@@ -27,21 +27,12 @@ export default function TeamMemberImage(
     }
   };
 
-  const shouldShowLeftArrows = !isCharacterPage && imgWidthValue > 1;
-  const shouldShowRightArrows = !isCharacterPage && imgWidthValue < 6;
   const shouldShowImage = imageUrl && imgWidthValue > 1;
   const showImage = imgWidthValue > 1;
 
-  const commonClasses = 'absolute top-0 bg-white bg-opacity-20 px-1 pb-1 cursor-pointer opacity-60';
-
   return (
     <div className={`relative flex flex-col ${imgWidthClasses[imgWidthValue]} ${imageHeightClass} align-middle`}>
-      {shouldShowLeftArrows && 
-        <span className={`${commonClasses} rounded-br-md left-0`} onClick={() => handleChangeImageSize(false)}>&#x27EA;</span>
-      }
-      {shouldShowRightArrows && 
-        <span className={`${commonClasses} rounded-bl-md right-0`} onClick={() => handleChangeImageSize(true)}>&#x27EB;</span>
-      }
+      <ImageResizeArrows handleChangeImageSize={handleChangeImageSize} imgWidthValue={imgWidthValue} isCharacterPage={isCharacterPage} />
       {shouldShowImage &&
         <img className={`${imageHeightClass} ${imgWidthClasses[imgWidthValue]} rounded-md object-cover`} src={imageUrl} alt={`${name} team member image`} />
       }
