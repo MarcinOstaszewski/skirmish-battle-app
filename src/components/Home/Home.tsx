@@ -1,10 +1,11 @@
 import Header1 from "../CommonElements/Header1";
 import ReadMoreSection from "../CommonElements/ReadMoreSection";
 import InlineRoute from "../CommonElements/InlineRouting";
+import OverflowAuto from "../CommonElements/OverflowAuto";
 
 export default function Home() {
   return (
-    <div className="h-full overflow-auto pb-32">
+    <OverflowAuto>
       <Header1>Skirmish Battle App</Header1>
 
       <ReadMoreSection
@@ -24,6 +25,6 @@ export default function Home() {
       <p>The sample Team is already configured, to make the process even faster, but all members' characteristics can be modified in <InlineRoute to="/team" title="Team" /> and <InlineRoute to="/character" title="Character" /> pages.</p>
 
       <p className="mt-8 text-xs">The app is built with React, TypeScript, Tailwind CSS, and Redux Toolkit.</p>
-    </div>
+    </OverflowAuto>
   );
 }

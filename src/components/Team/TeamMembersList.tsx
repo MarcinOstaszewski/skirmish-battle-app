@@ -1,4 +1,5 @@
 import { initialTeamMembersData } from "../../constants/initialTeam";
+import OverflowAuto from "../CommonElements/OverflowAuto";
 import TeamMember from "./TeamMember";
 
 export default function TeamMembersList() {
@@ -7,10 +8,10 @@ export default function TeamMembersList() {
   ));;
 
   return (
-    <div className="h-full overflow-auto pb-32">
+    <OverflowAuto>
       <div className="flex flex-col gap-y-4">
         {teamMembers}
       </div>
-    </div>
+    </OverflowAuto>
   );
 }
