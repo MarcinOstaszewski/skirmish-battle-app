@@ -1,14 +1,14 @@
 import { IMemberStat, IMemberStats } from "../../interfaces/memberStats";
-import StatColumn from "./StatColumn";
+import StatElement from "./StatElement";
 
-export default function TeamMemberStats({stats}: {stats: IMemberStats}) {
-  const statsColumns = stats.map((stat: IMemberStat, index: number) => (
-    <StatColumn key={index} stat={stat} />
+export default function TeamMemberStats({stats, classes = ' min-w-20 max-h-44'}: {stats: IMemberStats, classes?: string}) {
+  const statsElement = stats.map((stat: IMemberStat, index: number) => (
+    <StatElement key={index} stat={stat} />
   ));
 
   return (
-    <div className="flex flex-col min-w-20 max-h-44 justify-around bg-white dark:bg-zinc-900 border border-stone-400 rounded-md p-1">
-      {statsColumns}
+    <div className={`flex flex-col justify-around bg-white dark:bg-zinc-900 border border-stone-400 rounded-md p-1 ${classes}`}>
+      {statsElement}
     </div>
   );
 }
