@@ -22,10 +22,10 @@ const teamSlice = createSlice({
 });
 
 const chosenCharacterIndexSlice = createSlice({
-    name: 'chosenCharacterIndex',
-    initialState: { chosenCharacterIndex: 0 },
+    name: 'setCharacterIndex',
+    initialState: { chosenCharacterIndex: 2 },
     reducers: {
-        setchosenCharacterIndex(state, action) {
+        setCharacterIndex(state, action) {
             state.chosenCharacterIndex = action.payload;
         },
     },
@@ -44,5 +44,6 @@ export type RootStateType = ReturnType<typeof store.getState>;
 
 export const imageWidthActions = imageWidthSlice.actions;
 export const teamActions = teamSlice.actions;
+export const chosenCharacterIndexActions = chosenCharacterIndexSlice.actions;
 
 export default store;
