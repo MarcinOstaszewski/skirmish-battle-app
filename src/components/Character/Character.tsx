@@ -5,6 +5,8 @@ import OverflowAuto from "../CommonElements/OverflowAuto";
 import CharacterName from "./CharacterName";
 import FullWidthFlex from "../CommonElements/FullWidthFlex";
 import TeamMemberStats from "../Team/TeamMemberStats";
+import TeamMemberAbilitiesContainer from "../Team/TeamMemberAbilitiesContainer";
+import TeamMemberInventoryContainer from "../Team/TeamMemberInventoryContainer";
 
 export default function CharacterPage() {
   const chosenCharacterIndex = useSelector((state: RootStateType) => state.chosenCharacterIndexSlice.chosenCharacterIndex);
@@ -20,13 +22,11 @@ export default function CharacterPage() {
       <FullWidthFlex classNames="h-56 flex-wrap gap-y-4">
         <FullWidthFlex classNames="gap-x-4">
           <TeamMemberImage imageUrl={characterImage} isCharacterPage={true} name={characterName}/>
-          <TeamMemberStats stats={characterStats} classes={'max-h-56 w-full max-w-44'} />
+          <TeamMemberStats stats={characterStats} isCharacterPage={true} />
         </FullWidthFlex>
-        <FullWidthFlex>
-          <CharacterName
-            name={characterName}
-          />
-        </FullWidthFlex>
+        <CharacterName name={characterName} />
+        <TeamMemberAbilitiesContainer abilities={teamMember.abilities}/>
+        <TeamMemberInventoryContainer inventory={teamMember.inventory}/>
       </FullWidthFlex>
     </OverflowAuto>
   );
