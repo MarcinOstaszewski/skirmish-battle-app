@@ -8,6 +8,7 @@ import RootLayout from './pages/RootLayout.tsx'
 import RulesPage from './pages/RulesPage.tsx'
 import HomePage from './pages/HomePage.tsx'
 import TeamPage from './pages/TeamPage.tsx'
+import CharacterPage from './pages/CharacterPage.tsx'
 import store from './store/store.ts'
 import './index.css'
 
@@ -19,15 +20,20 @@ export const routesList = [
     title: 'Home'
   },
   {
+    path: '/rules',
+    element: <RulesPage />,
+    title: 'Rules'
+  },
+  {
     path: '/team',
     element: <TeamPage />,
     title: 'Team'
   },
   {
-    path: '/rules',
-    element: <RulesPage />,
-    title: 'Rules'
-  }
+    path: '/character',
+    element: <CharacterPage />,
+    title: 'Character'
+  },
 ];
 
 const router = createHashRouter([

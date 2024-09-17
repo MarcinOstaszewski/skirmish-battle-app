@@ -21,10 +21,21 @@ const teamSlice = createSlice({
     },
 });
 
+const chosenCharacterIndexSlice = createSlice({
+    name: 'chosenCharacterIndex',
+    initialState: { chosenCharacterIndex: 0 },
+    reducers: {
+        setchosenCharacterIndex(state, action) {
+            state.chosenCharacterIndex = action.payload;
+        },
+    },
+});
+
 const store = configureStore({
     reducer: {
         imageWidth: imageWidthSlice.reducer,
         team: teamSlice.reducer,
+        chosenCharacterIndexSlice: chosenCharacterIndexSlice.reducer,
     },
 });
 

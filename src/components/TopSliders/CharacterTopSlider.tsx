@@ -3,14 +3,13 @@ import { RootStateType } from "../../store/store";
 import TopSlider from "./TopSlider";
 import Column from "../CommonElements/Column";
 
-export default function TeamTopSlider() {
+export default function CharacterTopSlider() {
+  const chosenCharacterIndex = useSelector((state: RootStateType) => state.chosenCharacterIndexSlice.chosenCharacterIndex);
   const team = useSelector((state: RootStateType) => state.team);
 
   return (
     <TopSlider>
-      <Column title="Team name" content="Lethal Mambas" />
-      <Column title="Members" content={team.teamMembers.length} />
-      <Column title="Points" content={330} />
+      <Column title="Character" content={`${team.teamMembers[chosenCharacterIndex].name}`} />
     </TopSlider>
   );
 }
