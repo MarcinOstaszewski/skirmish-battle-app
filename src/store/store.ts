@@ -1,5 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { initialTeam } from '../constants/initialTeam';
+import { ITeamMember } from '../interfaces';
 
 const imageWidthSlice = createSlice({
   name: 'commonImageWidth',
@@ -35,8 +36,18 @@ const isEditedCurrentCharacterSlice = createSlice({
   name: 'isEditedCurrentCharacter',
   initialState: { isEditedCurrentCharacter: false },
   reducers: {
-    setIsEditedCurrentCharachter(state, action) {
+    setIsEditedCurrentCharacter(state, action) {
       state.isEditedCurrentCharacter = action.payload;
+    },
+  },
+});
+
+const currentCharacterSlice = createSlice({
+  name: 'currentCharacterData',
+  initialState: { currentCharacterData: {} as ITeamMember },
+  reducers: {
+    setCurrentCharacterData(state, action) {
+      state.currentCharacterData = action.payload;
     },
   },
 });
@@ -45,8 +56,9 @@ const store = configureStore({
   reducer: {
     imageWidth: imageWidthSlice.reducer,
     team: teamSlice.reducer,
-    chosenCharacterIndexSlice: chosenCharacterIndexSlice.reducer,
-    isEditedCurrentCharacterSlice: isEditedCurrentCharacterSlice.reducer,
+    chosenCharacterIndex: chosenCharacterIndexSlice.reducer,
+    isEditedCurrentCharacter: isEditedCurrentCharacterSlice.reducer,
+    currentCharacter: currentCharacterSlice.reducer,
   },
 });
 
@@ -57,5 +69,6 @@ export const imageWidthActions = imageWidthSlice.actions;
 export const teamActions = teamSlice.actions;
 export const chosenCharacterIndexActions = chosenCharacterIndexSlice.actions;
 export const isEditedCurrentCharacterActions = isEditedCurrentCharacterSlice.actions;
+export const currentCharacterDataActions = currentCharacterSlice.actions;
 
 export default store;
