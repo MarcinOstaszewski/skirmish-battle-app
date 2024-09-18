@@ -8,6 +8,9 @@ export default {
     extend: {
       maxHeight: {
         '18': '4.5rem',
+      },
+      maxWidth: {
+        '100': '25rem',
       }
     },
   },

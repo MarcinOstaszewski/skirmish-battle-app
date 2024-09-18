@@ -25,8 +25,8 @@ export default function CharacterPage() {
           <TeamMemberStats stats={characterStats} isCharacterPage={true} />
         </FullWidthFlex>
         <CharacterName name={characterName} />
-        <TeamMemberAbilitiesContainer abilities={teamMember.abilities}/>
-        <TeamMemberInventoryContainer inventory={teamMember.inventory}/>
+        <TeamMemberAbilitiesContainer abilities={teamMember.abilities} />
+        <TeamMemberInventoryContainer inventory={teamMember.inventory} />
       </FullWidthFlex>
     </OverflowAuto>
   );

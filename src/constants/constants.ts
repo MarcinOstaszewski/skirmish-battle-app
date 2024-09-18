@@ -5,5 +5,6 @@ export const imgWidthClasses: {[key: number]: string} = {
   4: 'max-w-32 min-w-32',
   5: 'max-w-36 min-w-36',
   6: 'max-w-44 min-w-44',
-  9: 'max-w-48 min-w-48',
+  8: 'max-w-48 min-w-48',
+  9: 'max-w-100 min-w-80',
 };

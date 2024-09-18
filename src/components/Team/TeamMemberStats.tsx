@@ -6,7 +6,7 @@ export default function TeamMemberStats({stats, isCharacterPage = false}: {stats
     <StatElement key={index} stat={stat} isCharacterPage={isCharacterPage} />
   ));
 
-  const classes = isCharacterPage ? 'max-h-56 w-full max-w-52' : 'min-w-20 max-h-44';
+  const classes = isCharacterPage ? 'max-h-56 w-full max-w-48' : 'min-w-20 max-h-44';
 
   return (
     <div className={`flex flex-col justify-around bg-white dark:bg-zinc-900 border border-stone-400 rounded-md p-1 ${classes}`}>

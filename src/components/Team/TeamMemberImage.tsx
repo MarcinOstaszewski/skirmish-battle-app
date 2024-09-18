@@ -6,7 +6,7 @@ import { imgWidthClasses } from "../../constants/constants";
 export default function TeamMemberImage(
   { imageUrl, name, isCharacterPage = false }: { imageUrl: string | undefined, name?: string, isCharacterPage?: boolean }
 ) {
-  const initialWidth = isCharacterPage ? 9 : 4;
+  const initialWidth = isCharacterPage ? 8 : 4;
   const imageHeightClass = isCharacterPage ? 'h-56' : 'h-44';
   const [imgWidthValue, setImgWidthValue] = useState(initialWidth);
 

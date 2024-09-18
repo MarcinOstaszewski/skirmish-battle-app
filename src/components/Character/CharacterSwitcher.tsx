@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { chosenCharacterIndexActions, RootStateType } from "../../store/store";
+import ColumnContainer from "../CommonElements/ColumnContainer";
 
 export default function CharacterSwitcher() {
   const dispatch = useDispatch();
   const team = useSelector((state: RootStateType) => state.team);
+  const isEditedCharacter = useSelector((state: RootStateType) => state.isEditedCurrentCharacterSlice.isEditedCurrentCharacter);
   const chosenCharacterIndex = useSelector((state: RootStateType) => state.chosenCharacterIndexSlice.chosenCharacterIndex);
-  // const chosenCharacter = team.teamMembers[chosenCharacterIndex];
   const showPrev = chosenCharacterIndex > 0;
   const showNext = chosenCharacterIndex < team.teamMembers.length - 1;
 
@@ -17,11 +18,15 @@ export default function CharacterSwitcher() {
     dispatch(chosenCharacterIndexActions.setCharacterIndex(chosenCharacterIndex + 1));
   };
 
-  return (<>
-    <div className="flex text-sm">
-      <button className={`${showPrev ? '' : 'hidden'} flex mr-auto `} onClick={handlePrev}>Prev</button>
-      <button className={`${showNext ? '' : 'hidden'} flex ml-auto`} onClick={handleNext}>Next</button>
-    </div>
-    <span className="flex justify-center font-bold">Character</span>
-  </>);
+  return (
+    <ColumnContainer>
+      <div className="flex text-sm min-h-5">
+        <button className={`${showPrev ? '' : 'hidden'} flex underline disabled:opacity-40 mr-auto`} onClick={handlePrev} disabled={isEditedCharacter}>&#x27EA; Prev</button>
+        <button className={`${showNext ? '' : 'hidden'} flex underline disabled:opacity-40 ml-auto`} onClick={handleNext} disabled={isEditedCharacter}>Next &#x27EB;</button>
+      </div>
+      <span className="flex justify-center font-bold">
+        Character ({chosenCharacterIndex + 1})
+      </span>
+    </ColumnContainer>
+  );
 }
