@@ -11,22 +11,19 @@ import TeamMemberInventoryContainer from "../Team/TeamMemberInventoryContainer";
 export default function CharacterPage() {
   const chosenCharacterIndex = useSelector((state: RootStateType) => state.chosenCharacterIndexSlice.chosenCharacterIndex);
   const team = useSelector((state: RootStateType) => state.team);
-  const teamMember = team.teamMembers[chosenCharacterIndex];
-
-  const characterImage = teamMember.imageUrl;
-  const characterName = teamMember.name;
-  const characterStats = teamMember.stats;
+  const chosenCharacter = team.teamMembers[chosenCharacterIndex];
+  const { abilities, inventory, imageUrl = '', name, stats } = chosenCharacter;
 
   return (
     <OverflowAuto>
       <FullWidthFlex classNames="h-56 flex-wrap gap-y-4">
         <FullWidthFlex classNames="gap-x-4">
-          <TeamMemberImage imageUrl={characterImage} isCharacterPage={true} name={characterName}/>
-          <TeamMemberStats stats={characterStats} isCharacterPage={true} />
+          <TeamMemberImage imageUrl={imageUrl} isCharacterPage={true} name={name}/>
+          <TeamMemberStats stats={stats} isCharacterPage={true} />
         </FullWidthFlex>
-        <CharacterName name={characterName} />
-        <TeamMemberAbilitiesContainer abilities={teamMember.abilities} />
-        <TeamMemberInventoryContainer inventory={teamMember.inventory} />
+        <CharacterName name={name} />
+        <TeamMemberAbilitiesContainer abilities={abilities} />
+        <TeamMemberInventoryContainer inventory={inventory} />
       </FullWidthFlex>
     </OverflowAuto>
   );
