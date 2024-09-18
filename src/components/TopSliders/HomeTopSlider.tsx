@@ -5,7 +5,7 @@ export default function HomeTopSlider() {
 
   return (
     <TopSlider>
-      <Column title="Lorem" content="Ipsum sic amet" />
+      <Column title="About" content="this web app" />
     </TopSlider>
   );
 }

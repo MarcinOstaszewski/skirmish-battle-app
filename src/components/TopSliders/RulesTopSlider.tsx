@@ -5,7 +5,7 @@ export default function RulesTopSlider() {
 
   return (
     <TopSlider>
-      <Column title="Lorem" content="Ipsum" />
+      <Column title="(work in progress)" content="Basic rules" />
     </TopSlider>
   );
 }
