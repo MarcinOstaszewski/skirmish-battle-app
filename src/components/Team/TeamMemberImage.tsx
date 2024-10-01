@@ -12,7 +12,7 @@ export default function TeamMemberImage(
     imageUrl: string | undefined,
     name?: string,
     isCharacterPage?: boolean
-    index: number
+    index?: number
   }
 ) {
   const dispatch = useDispatch();
