@@ -1,10 +1,14 @@
+import { useSelector } from "react-redux";
 import { initialTeamMembersData } from "../../constants/initialTeam";
 import OverflowAuto from "../CommonElements/OverflowAuto";
 import TeamMember from "./TeamMember";
+import { RootStateType } from "../../store/store";
 
 export default function TeamMembersList() {
-  const teamMembers = initialTeamMembersData.map((member, index) => (
-    <TeamMember key={index} member={member} />
+  const teamMembersData = useSelector((state: RootStateType) => state.team.teamMembers);
+
+  const teamMembers = teamMembersData.map((member, index) => (
+    <TeamMember key={index} member={member} index={index} />
   ));;
 
   return (
