@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { imgWidthClasses } from "../../constants/constants";
 import { RootStateType } from "../../store/store";
 import { ITeamMember } from "../../interfaces";
-import { current } from "@reduxjs/toolkit";
 
 export default function CharacterName (
   {name, currentCharacter, updateCurrentCharacter}:
