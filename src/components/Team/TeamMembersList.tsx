@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { initialTeamMembersData } from "../../constants/initialTeam";
 import OverflowAuto from "../CommonElements/OverflowAuto";
 import TeamMember from "./TeamMember";
 import { RootStateType } from "../../store/store";
