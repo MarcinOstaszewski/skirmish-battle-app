@@ -1,22 +1,36 @@
-
+import copy from "fast-copy";
 import { useDispatch, useSelector } from "react-redux";
-import { isEditedCurrentCharacterActions, RootStateType } from "../../store/store";
+import { currentCharacterDataActions, isEditedCurrentCharacterActions, RootStateType, teamActions } from "../../store/store";
 import ColumnContainer from "../CommonElements/ColumnContainer";
+import { ITeamMember } from "../../interfaces";
 
 export default function EditCurrentCharacter() {
   const dispatch = useDispatch();
-  const isEditedCharacter = useSelector((state: RootStateType) => state.isEditedCurrentCharacterSlice.isEditedCurrentCharacter);
-
+  const isEditedCharacter = useSelector((state: RootStateType) => state.isEditedCurrentCharacter.isEditedCurrentCharacter);
+  const chosenCharacterIndex = useSelector((state: RootStateType) => state.chosenCharacterIndex.chosenCharacterIndex);
+  const updatedCharacter = useSelector((state: RootStateType) => state.currentCharacter.currentCharacterData);
+  const team = useSelector((state: RootStateType) => state.team);
+  const teamMembersCopy = copy(team.teamMembers);
+  
+  const leaveEditingUpdateTeamAndCurrentCharacter = (teamMembersData: ITeamMember[]) => {
+    dispatch(teamActions.updateTeamMembers(teamMembersData));
+    dispatch(isEditedCurrentCharacterActions.setIsEditedCurrentCharacter(false));
+    dispatch(currentCharacterDataActions.setCurrentCharacterData({}));
+  };
+  
   const handleEditCharacter = () => {
-    dispatch(isEditedCurrentCharacterActions.setIsEditedCurrentCharachter(true));
+    dispatch(isEditedCurrentCharacterActions.setIsEditedCurrentCharacter(true));
+    dispatch(currentCharacterDataActions.setCurrentCharacterData(copy(team.teamMembers[chosenCharacterIndex])));
   }
 
+
   const handleSaveChanges = () => {
-    dispatch(isEditedCurrentCharacterActions.setIsEditedCurrentCharachter(false));
+    teamMembersCopy[chosenCharacterIndex] = updatedCharacter;
+    leaveEditingUpdateTeamAndCurrentCharacter(teamMembersCopy);
   }
 
   const handleRejectChanges = () => {
-    dispatch(isEditedCurrentCharacterActions.setIsEditedCurrentCharachter(false));
+    leaveEditingUpdateTeamAndCurrentCharacter(team.teamMembers);
   }
 
   return (
@@ -27,9 +41,9 @@ export default function EditCurrentCharacter() {
           <button className="underline" onClick={handleSaveChanges}>Save</button>
         </span>
       ) : (
-        <span className="flex justify-center text-sm underline" onClick={handleEditCharacter}>Edit</span>
+        <button className="flex justify-center text-sm underline" onClick={handleEditCharacter}>Edit</button>
       )}
-      <span className="flex justify-center font-bold">{ isEditedCharacter ? 'all changes' : 'Character'}</span>
+      <span className="flex justify-center font-bold">{ isEditedCharacter ? 'all changes' : 'character'}</span>
     </ColumnContainer>
   );
 }

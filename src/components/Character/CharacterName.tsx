@@ -1,16 +1,28 @@
 import { useSelector } from "react-redux";
 import { imgWidthClasses } from "../../constants/constants";
 import { RootStateType } from "../../store/store";
-import { useState } from "react";
+import { ITeamMember } from "../../interfaces";
+import { current } from "@reduxjs/toolkit";
 
-export default function CharacterName ({name}: {name: string}) {
+export default function CharacterName (
+  {name, currentCharacter, updateCurrentCharacter}:
+  {
+    name: string, 
+    currentCharacter: ITeamMember,
+    updateCurrentCharacter: (updatedCharacter: ITeamMember) => void
+  }
+) {
   const widthClassNames = imgWidthClasses[9];
-  const [nameInputValue, setNameInputValue] = useState(name);
-
-  const isEditedCharacter = useSelector((state: RootStateType) => state.isEditedCurrentCharacterSlice.isEditedCurrentCharacter);
+  
+  const nameInputValue = currentCharacter.name;
+  const isEditedCharacter = useSelector((state: RootStateType) => state.isEditedCurrentCharacter.isEditedCurrentCharacter);
   
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNameInputValue(e.target.value);
+    const updatedCharacter = {
+      ...currentCharacter,
+      name: e.target.value
+    };
+    updateCurrentCharacter(updatedCharacter);
   };
 
   return (
