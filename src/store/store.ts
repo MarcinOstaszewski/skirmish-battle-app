@@ -1,6 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
-import { initialTeam } from '../constants/initialTeam';
 import { ITeamMember } from '../interfaces';
+import getInitialTeamData from '../helpers/getInitialTeamData';
 
 const imageWidthSlice = createSlice({
   name: 'commonImageWidth',
@@ -11,6 +11,8 @@ const imageWidthSlice = createSlice({
     },
   },
 });
+
+const initialTeam = getInitialTeamData();
 
 const teamSlice = createSlice({
   name: 'team',

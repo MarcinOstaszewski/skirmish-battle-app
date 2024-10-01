@@ -16,6 +16,7 @@ export default function EditCurrentCharacter() {
     dispatch(teamActions.updateTeamMembers(teamMembersData));
     dispatch(isEditedCurrentCharacterActions.setIsEditedCurrentCharacter(false));
     dispatch(currentCharacterDataActions.setCurrentCharacterData({}));
+    localStorage.setItem('teamMembers', JSON.stringify(teamMembersData));
   };
   
   const handleEditCharacter = () => {
