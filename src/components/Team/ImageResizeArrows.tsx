@@ -4,7 +4,7 @@ export default function ImageResizeArrows(
 ) {
   const shouldShowLeftArrows = !isCharacterPage && imgWidthValue > 1;
   const shouldShowRightArrows = !isCharacterPage && imgWidthValue < 6;
-  const commonClasses = 'absolute top-0 bg-white bg-opacity-20 px-1 pb-1 cursor-pointer opacity-60';
+  const commonClasses = 'absolute top-0 bg-white bg-opacity-30 px-1 pb-1 cursor-pointer';
 
   return (<>
     {shouldShowLeftArrows && 

@@ -35,20 +35,25 @@ export default function TeamMemberImage(
   const shouldShowImage = imageUrl && imgWidthValue > 1;
   const isNameHorizontal = imgWidthValue > 1;
   const classNames = `${imgWidthClasses[imgWidthValue]} ${imageHeightClass}`;
+  const characterImage = shouldShowImage ? <img className={`${classNames} rounded-md object-cover`} src={imageUrl} alt={`${name} team member image`} /> : null;
 
-  return <Link to={`/character`} onClick={handleImageClick}>
+  return (
     <div className={`relative flex flex-col ${classNames}`}>
       <ImageResizeArrows handleChangeImageSize={handleChangeImageSize} imgWidthValue={imgWidthValue} isCharacterPage={isCharacterPage} />
-      {shouldShowImage &&
-        <img className={`${classNames} rounded-md object-cover`} src={imageUrl} alt={`${name} team member image`} />
+      {!isCharacterPage ? (
+        <Link to={`/character`} onClick={handleImageClick}>
+          {characterImage}
+        </Link>
+        ) : characterImage
       }
       {!isCharacterPage && name &&
-        <TeamMemberName
-          name={name}
-          isNameHorizontal={isNameHorizontal}
-          classNames={classNames}
-        />
+        <Link to={`/character`} onClick={handleImageClick}>
+          <TeamMemberName
+            name={name}
+            isNameHorizontal={isNameHorizontal}
+            classNames={classNames}
+          />
+        </Link>
       }
-    </div>
-  </Link>
+    </div>)
 }
