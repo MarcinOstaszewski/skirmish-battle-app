@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { currentCharacterDataActions, RootStateType } from "../../store/store";
+import { currentCharacterActions, RootStateType } from "../../store";
 import TeamMemberImage from "../Team/TeamMemberImage";
 import OverflowAuto from "../CommonElements/OverflowAuto";
 import CharacterName from "./CharacterName";
@@ -20,7 +20,7 @@ export default function CharacterPage() {
   const { abilities, inventory, imageUrl = '', name, stats } = currentCharacter;
   
   const updateCurrentCharacter = (updatedCharacter: ITeamMember) => {
-    dispatch(currentCharacterDataActions.setCurrentCharacterData(updatedCharacter));
+    dispatch(currentCharacterActions.setCurrentCharacterData(updatedCharacter));
   }
 
   return (

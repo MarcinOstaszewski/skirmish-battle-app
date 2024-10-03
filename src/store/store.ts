@@ -1,76 +1,21 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
-import { ITeamMember } from '../interfaces';
-import getInitialTeamData from '../helpers/getInitialTeamData';
-
-const imageWidthSlice = createSlice({
-  name: 'commonImageWidth',
-  initialState: { commonImageWidth: null },
-  reducers: {
-    setCommonImageWidth(state, action) {
-      state.commonImageWidth = action.payload;
-    },
-  },
-});
-
-const initialTeam = getInitialTeamData();
-
-const teamSlice = createSlice({
-  name: 'team',
-  initialState: initialTeam,
-  reducers: {
-    updateTeamMembers(state, action) {
-      state.teamMembers = action.payload;
-    },
-  },
-});
-
-const chosenCharacterIndexSlice = createSlice({
-  name: 'setCharacterIndex',
-  initialState: { chosenCharacterIndex: 0 },
-  reducers: {
-    setCharacterIndex(state, action) {
-      state.chosenCharacterIndex = action.payload;
-    },
-  },
-});
-
-const isEditedCurrentCharacterSlice = createSlice({
-  name: 'isEditedCurrentCharacter',
-  initialState: { isEditedCurrentCharacter: false },
-  reducers: {
-    setIsEditedCurrentCharacter(state, action) {
-      state.isEditedCurrentCharacter = action.payload;
-    },
-  },
-});
-
-const currentCharacterSlice = createSlice({
-  name: 'currentCharacterData',
-  initialState: { currentCharacterData: {} as ITeamMember },
-  reducers: {
-    setCurrentCharacterData(state, action) {
-      state.currentCharacterData = action.payload;
-    },
-  },
-});
+import { configureStore } from '@reduxjs/toolkit';
+import { commonImageWidthSliceReducer } from './CommonImageWidthSlice';
+import { teamSliceReducer } from './TeamSlice';
+import { chosenCharacterIndexSliceReducer } from './ChosenCharacterIndexSlice';
+import { isEditedCurrentCharacterSliceReducer } from './IsEditedCurrentCharacterSlice';
+import { currentCharacterSliceReducer } from './CurrentCharacterSlice';
 
 const store = configureStore({
   reducer: {
-    imageWidth: imageWidthSlice.reducer,
-    team: teamSlice.reducer,
-    chosenCharacterIndex: chosenCharacterIndexSlice.reducer,
-    isEditedCurrentCharacter: isEditedCurrentCharacterSlice.reducer,
-    currentCharacter: currentCharacterSlice.reducer,
+    imageWidth: commonImageWidthSliceReducer,
+    team: teamSliceReducer,
+    chosenCharacterIndex: chosenCharacterIndexSliceReducer,
+    isEditedCurrentCharacter: isEditedCurrentCharacterSliceReducer,
+    currentCharacter: currentCharacterSliceReducer,
   },
 });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootStateType = ReturnType<typeof store.getState>;
-
-export const imageWidthActions = imageWidthSlice.actions;
-export const teamActions = teamSlice.actions;
-export const chosenCharacterIndexActions = chosenCharacterIndexSlice.actions;
-export const isEditedCurrentCharacterActions = isEditedCurrentCharacterSlice.actions;
-export const currentCharacterDataActions = currentCharacterSlice.actions;
 
 export default store;

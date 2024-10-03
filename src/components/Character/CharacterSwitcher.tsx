@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { chosenCharacterIndexActions, RootStateType } from "../../store/store";
+import { chosenCharacterIndexActions, RootStateType } from "../../store/";
 import ColumnContainer from "../CommonElements/ColumnContainer";
 
 export default function CharacterSwitcher() {

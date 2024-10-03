@@ -4,7 +4,7 @@ import ImageResizeArrows from "./ImageResizeArrows";
 import { imgWidthClasses } from "../../constants/constants";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { chosenCharacterIndexActions } from "../../store/store";
+import { chosenCharacterIndexActions } from "../../store/ChosenCharacterIndexSlice";
 
 export default function TeamMemberImage(
   { imageUrl, name, isCharacterPage = false, index }:
@@ -38,7 +38,7 @@ export default function TeamMemberImage(
   const characterImage = shouldShowImage ? <img className={`${classNames} rounded-md object-cover`} src={imageUrl} alt={`${name} team member image`} /> : null;
 
   return (
-    <div className={`relative flex flex-col ${classNames}`}>
+    <div className={`relative flex flex-col text-white ${classNames}`}>
       <ImageResizeArrows handleChangeImageSize={handleChangeImageSize} imgWidthValue={imgWidthValue} isCharacterPage={isCharacterPage} />
       {!isCharacterPage ? (
         <Link to={`/character`} onClick={handleImageClick}>

@@ -1,6 +1,6 @@
 import copy from "fast-copy";
 import { useDispatch, useSelector } from "react-redux";
-import { currentCharacterDataActions, isEditedCurrentCharacterActions, RootStateType, teamActions } from "../../store/store";
+import { currentCharacterActions, isEditedCurrentCharacterActions, RootStateType, teamActions } from "../../store/";
 import ColumnContainer from "../CommonElements/ColumnContainer";
 import { ITeamMember } from "../../interfaces";
 
@@ -15,13 +15,13 @@ export default function EditCurrentCharacter() {
   const leaveEditingUpdateTeamAndCurrentCharacter = (teamMembersData: ITeamMember[]) => {
     dispatch(teamActions.updateTeamMembers(teamMembersData));
     dispatch(isEditedCurrentCharacterActions.setIsEditedCurrentCharacter(false));
-    dispatch(currentCharacterDataActions.setCurrentCharacterData({}));
+    dispatch(currentCharacterActions.setCurrentCharacterData({}));
     localStorage.setItem('teamMembers', JSON.stringify(teamMembersData));
   };
   
   const handleEditCharacter = () => {
     dispatch(isEditedCurrentCharacterActions.setIsEditedCurrentCharacter(true));
-    dispatch(currentCharacterDataActions.setCurrentCharacterData(copy(team.teamMembers[chosenCharacterIndex])));
+    dispatch(currentCharacterActions.setCurrentCharacterData(copy(team.teamMembers[chosenCharacterIndex])));
   }
 
 
