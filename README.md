@@ -5,3 +5,5 @@ Optimised for mobile devices - build your team on your phone or tablet.
 https://marcinostaszewski.github.io/skirmish-battle-app/
 
 
+
+Built with Vite + React + Typescript + Redux Toolkit + Tailwind CSS
