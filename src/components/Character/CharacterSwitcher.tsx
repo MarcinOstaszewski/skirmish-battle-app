@@ -37,7 +37,7 @@ export default function CharacterSwitcher() {
         </button>
       </div>
       <span className="flex justify-center font-bold">
-        Character ({chosenCharacterIndex + 1})
+        character ({chosenCharacterIndex + 1})
       </span>
     </ColumnContainer>
   );
